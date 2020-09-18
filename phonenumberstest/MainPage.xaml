@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="phonenumberstest.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="True">
+    <StackLayout>
+        <CollectionView ItemsSource="{Binding Contacts}">
+            <CollectionView.EmptyViewTemplate>
+                <DataTemplate>
+                    <Label
+                        HorizontalOptions="CenterAndExpand"
+                        Text="There are no contacts!"
+                        VerticalOptions="CenterAndExpand" />
+                </DataTemplate>
+            </CollectionView.EmptyViewTemplate>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="10" Spacing="0">
+                        <StackLayout Orientation="Horizontal" Spacing="5">
+                            <Label Text="{Binding Name}" />
+                            <Label Text="{Binding Surname}" />
+                        </StackLayout>
+                        <Label Text="{Binding Number}" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button
+            Command="{Binding GetRequest}"
+            IsEnabled="{Binding Synchronizing}"
+            Text="{Binding SynchronizationText}" />
+    </StackLayout>
+</ContentPage>
